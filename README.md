@@ -39,3 +39,6 @@ Configurar no Supabase Auth > URL Configuration as URLs do staging/produção no
 - Deploy da função com `verify_jwt = true`. Não incluir chaves secretas no frontend.
 
 Build da v1.1 validado. Parser verificado com pesquisa real por João Neves, normalização de acentos e rejeição de edições diferentes. O fluxo completo de guardar/colocar necessita de uma sessão do utilizador para validação real.
+
+## v1.1.1 — Saldo editável
+No Dashboard, Moedas disponíveis > Alterar saldo permite guardar um valor inteiro não negativo na equipa ativa. A atualização respeita o proprietário via RLS e só apresenta confirmação após resposta da base de dados.
