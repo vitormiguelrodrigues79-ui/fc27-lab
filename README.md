@@ -28,3 +28,14 @@ npm run build
 ```
 
 Configurar no Supabase Auth > URL Configuration as URLs do staging/produção nos Redirect URLs para o Google OAuth funcionar fora de localhost.
+
+## v1.1 — Pesquisa por nome
+- Em Jogadores > Adicionar, pesquisar pelo nome (mínimo 3 caracteres) e escolher uma carta base FC 27 da fonte pública de ratings da EA.
+- No Plantel, tocar numa posição para pesquisar e colocar o jogador diretamente.
+- Seleção explícita e confirmação antes de guardar; reutiliza cartas já existentes.
+- Entrada manual continua disponível para cartas especiais/Evolutions. Não há sincronização automática de preços.
+- `supabase/functions/fc27-player-search` valida sessão, recusa acesso anónimo, limita pedidos e confirma a edição FC 27 antes de devolver dados.
+- Fonte: https://www.ea.com/games/ea-sports-fc/ratings. A integração depende do formato público dessa página e pode necessitar de manutenção. Não é uma API licenciada nem uma associação à EA.
+- Deploy da função com `verify_jwt = true`. Não incluir chaves secretas no frontend.
+
+Build da v1.1 validado. Parser verificado com pesquisa real por João Neves, normalização de acentos e rejeição de edições diferentes. O fluxo completo de guardar/colocar necessita de uma sessão do utilizador para validação real.
